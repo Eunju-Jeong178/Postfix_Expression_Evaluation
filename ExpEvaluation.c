@@ -1,3 +1,4 @@
+// by Eunju Jeong, eunju0316@sookmyung.ac.kr
 //postfix expression evaluation program
 
 #include <stdio.h>
@@ -20,7 +21,7 @@ int main(void)
 {
     printf("Input a postfix expression :");
     fgets(expr, 100, stdin);
-    printf("%s\n", expr); // ÀÔ·ÂÇÑ ¼ö½ÄÀ» Ãâ·ÂÇØÁÜ
+    printf("%s\n", expr); // ì…ë ¥í•œ ìˆ˜ì‹ì„ ì¶œë ¥í•´ì¤Œ
     eval_postfix();
 }
 
@@ -30,7 +31,7 @@ void push(int item)
     {
         int num;
         num = pop();
-        stack[++top] = item + 10 * num;  // ¿¹¸¦ µé¾î sta[0]=3 ÀÌ¾ú´Ù¸é s[0]=30À¸·Î ¹Ù²ï´Ù.
+        stack[++top] = item + 10 * num;  // ì˜ˆë¥¼ ë“¤ì–´ sta[0]=3 ì´ì—ˆë‹¤ë©´ s[0]=30ìœ¼ë¡œ ë°”ë€ë‹¤.
     }
     else if (pos == 0)
     {
@@ -50,13 +51,13 @@ int eval_postfix()
     char sym;
     int i = 0, op1, op2;
 
-    while ((sym = expr[i++]) != '\n')  // ¼ö½ÄÀÇ ³¡±îÁö ¹İº¹
+    while ((sym = expr[i++]) != '\n')  // ìˆ˜ì‹ì˜ ëê¹Œì§€ ë°˜ë³µ
     {
-        if (isdigit(sym))   // 0~9ÀÇ ¼ıÀÚÀÌ¸é 0ÀÌ ¾Æ´Ñ °ªÀ» ¹İÈ¯. ±×·¸Áö ¾ÊÀ¸¸é 0À» ¹İÈ¯.
+        if (isdigit(sym))   // 0~9ì˜ ìˆ«ìì´ë©´ 0ì´ ì•„ë‹Œ ê°’ì„ ë°˜í™˜. ê·¸ë ‡ì§€ ì•Šìœ¼ë©´ 0ì„ ë°˜í™˜.
             push(sym - '0');
-        else if (sym == ' ')  // ½ºÆäÀÌ½º ¹Ù
+        else if (sym == ' ')  // ìŠ¤í˜ì´ìŠ¤ ë°”
             pos = 0;
-        else  // ¿¬»êÀÚ(+,-,*,/)
+        else  // ì—°ì‚°ì(+,-,*,/)
         {
             pos = 0;
             op2 = pop();
